@@ -24,6 +24,10 @@ public class DomainController {
     //@RequiredArgsConstructor cria construtor e injeta valor na propriedade final quando a classe é instanciada;
     private final DomainService domainService;
 
+    public DomainController(DomainService domainService) {
+        this.domainService = domainService;
+    }
+
     /*
     Gerado pelo lombok, substituído pelo @RequiredArgsConstructor
 
