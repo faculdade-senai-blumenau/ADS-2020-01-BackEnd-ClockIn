@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/domains")
-@RequiredArgsConstructor //criará construtor injetando valor em propriedades final;
 public class DomainController {
 
     //@RequiredArgsConstructor cria construtor e injeta valor na propriedade final quando a classe é instanciada;
