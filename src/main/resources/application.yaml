@@ -1,8 +1,0 @@
-spring:
-    datasource:
-        url: jdbc:postgresql://clockin.citwpiglpjzm.sa-east-1.rds.amazonaws.com:5432/postgres
-        username: postgres
-        password: postgres
-
-server:
-    port: 5000
