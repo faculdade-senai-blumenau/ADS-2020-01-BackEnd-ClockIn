@@ -48,4 +48,13 @@ public class JornadaController {
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping(path ={"/{idJornada}"})
+    public ResponseEntity<?> deleteJornada(@PathVariable("idJornada") int idJornada) {
+        return jornadaRepository.findById(idJornada)
+                .map(record -> {
+                    jornadaRepository.deleteById(idJornada);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
+    }
 }
