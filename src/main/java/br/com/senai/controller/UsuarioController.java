@@ -1,8 +1,6 @@
 package br.com.senai.controller;
 
-import br.com.senai.model.CargoModel;
 import br.com.senai.model.UsuarioModel;
-import br.com.senai.repository.CargoRepository;
 import br.com.senai.repository.UsuarioRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/cargo"})
+@RequestMapping({"/usuario"})
 public class UsuarioController {
 
     private UsuarioRepository usuarioRepository;

@@ -31,7 +31,7 @@ public class UsuarioModel {
     private short cargoConfianca;
 
     @ManyToOne
-    @JoinColumn(name = "cargo/{}")
+    @JoinColumn(name = "id_cargo")
     private CargoModel cargo;
 
     @ManyToOne
