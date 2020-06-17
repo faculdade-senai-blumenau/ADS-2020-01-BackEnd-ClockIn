@@ -16,12 +16,14 @@ public class RegistroPontoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRegistroPonto;
+    @Column(name = "id_usuario")
+    private int idUsuario;
     private LocalDateTime dataRegistro;
     private int justificaPonto;
     private String justificativaReprovacao;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario", updatable=false, insertable = false)
     private UsuarioModel usuario;
 
     public int getIdRegistroPonto() {
@@ -30,6 +32,14 @@ public class RegistroPontoModel {
 
     public void setIdRegistroPonto(int idRegistroPonto) {
         this.idRegistroPonto = idRegistroPonto;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public LocalDateTime getDataRegistro() {
