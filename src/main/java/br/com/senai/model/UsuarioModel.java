@@ -18,6 +18,10 @@ public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
+    @Column(name = "id_cargo")
+    private int idCargo;
+    @Column(name = "id_jornada")
+    private int idJornada;
     private String nomeUsuario;
     private String cpf;
     private String rg;
@@ -31,11 +35,11 @@ public class UsuarioModel {
     private short cargoConfianca;
 
     @ManyToOne
-    @JoinColumn(name = "id_cargo")
+    @JoinColumn(name = "id_cargo", updatable=false, insertable = false)
     private CargoModel cargo;
 
     @ManyToOne
-    @JoinColumn(name = "id_jornada")
+    @JoinColumn(name = "id_jornada", updatable=false, insertable = false)
     private JornadaModel jornada;
 
     public int getIdUsuario() {
@@ -44,6 +48,22 @@ public class UsuarioModel {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getIdCargo() {
+        return idCargo;
+    }
+
+    public void setIdCargo(int idCargo) {
+        this.idCargo = idCargo;
+    }
+
+    public int getIdJornada() {
+        return idJornada;
+    }
+
+    public void setIdJornada(int idJornada) {
+        this.idJornada = idJornada;
     }
 
     public String getNomeUsuario() {
