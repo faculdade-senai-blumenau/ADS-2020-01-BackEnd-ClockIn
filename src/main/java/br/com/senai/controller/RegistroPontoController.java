@@ -40,6 +40,7 @@ public class RegistroPontoController {
                                                                   @RequestBody RegistroPontoModel registroPonto) {
         return registroPontoRepository.findById(idRegistroPonto)
                 .map(record -> {
+                    record.setIdUsuario(registroPonto.getIdUsuario());
                     record.setDataRegistro(registroPonto.getDataRegistro());
                     record.setJustificaPonto(registroPonto.getJustificaPonto());
                     record.setJustificativaReprovacao(registroPonto.getJustificativaReprovacao());
