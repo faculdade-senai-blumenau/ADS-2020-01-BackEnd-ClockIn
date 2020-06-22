@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +19,8 @@ public class RegistroPontoModel {
     private int idRegistroPonto;
     @Column(name = "id_usuario")
     private int idUsuario;
-    private LocalDateTime dataRegistro;
+    private LocalDate dataRegistro;
+    private LocalTime horaRegistro;
     private int justificaPonto;
     private String justificativaReprovacao;
 
@@ -42,12 +44,20 @@ public class RegistroPontoModel {
         this.idUsuario = idUsuario;
     }
 
-    public LocalDateTime getDataRegistro() {
+    public LocalDate getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(LocalDateTime dataRegistro) {
+    public void setDataRegistro(LocalDate dataRegistro) {
         this.dataRegistro = dataRegistro;
+    }
+
+    public LocalTime getHoraRegistro() {
+        return horaRegistro;
+    }
+
+    public void setHoraRegistro(LocalTime horaRegistro) {
+        this.horaRegistro = horaRegistro;
     }
 
     public int getJustificaPonto() {
