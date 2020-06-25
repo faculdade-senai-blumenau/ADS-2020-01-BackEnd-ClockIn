@@ -1,7 +1,5 @@
 package br.com.senai;
 
-import br.com.senai.model.Contact;
-import br.com.senai.repository.ContactRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

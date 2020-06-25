@@ -40,6 +40,8 @@ public class UsuarioController {
                                                       @RequestBody UsuarioModel usuario) {
         return usuarioRepository.findById(idUsuario)
                 .map(record -> {
+                    record.setIdCargo(usuario.getIdCargo());
+                    record.setIdJornada(usuario.getIdJornada());
                     record.setNomeUsuario(usuario.getNomeUsuario());
                     record.setCpf(usuario.getCpf());
                     record.setRg(usuario.getRg());
@@ -51,8 +53,6 @@ public class UsuarioController {
                     record.setSenha(usuario.getSenha());
                     record.setFoto(usuario.getFoto());
                     record.setCargoConfianca(usuario.getCargoConfianca());
-                    record.setCargo(usuario.getCargo());
-                    record.setJornada(usuario.getJornada());
                     UsuarioModel updated = usuarioRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());

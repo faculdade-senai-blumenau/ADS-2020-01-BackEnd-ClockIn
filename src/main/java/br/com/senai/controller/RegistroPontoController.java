@@ -42,6 +42,7 @@ public class RegistroPontoController {
                 .map(record -> {
                     record.setIdUsuario(registroPonto.getIdUsuario());
                     record.setDataRegistro(registroPonto.getDataRegistro());
+                    record.setHoraRegistro(registroPonto.getHoraRegistro());
                     record.setJustificaPonto(registroPonto.getJustificaPonto());
                     record.setJustificativaReprovacao(registroPonto.getJustificativaReprovacao());
                     record.setUsuario(registroPonto.getUsuario());
