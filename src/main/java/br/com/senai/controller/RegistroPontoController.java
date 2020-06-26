@@ -17,17 +17,10 @@ public class RegistroPontoController {
         this.registroPontoRepository = registroPontoRepository;
     }
 
-    @GetMapping
-    public ResponseEntity<List<RegistroPontoModel>> getRegistroPonto() {
-        List<RegistroPontoModel> registroPonto = registroPontoRepository.findAll();
+    @GetMapping(path = {"/{idUsuario}"})
+    public ResponseEntity<List<RegistroPontoModel>> getRegistroPonto(@PathVariable int idUsuario) {
+        List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistroPontoUsuario(idUsuario);
         return ResponseEntity.ok(registroPonto);
-    }
-
-    @GetMapping(path = {"/{idRegistroPonto}"})
-    public ResponseEntity<RegistroPontoModel> findById(@PathVariable int idRegistroPonto) {
-        return registroPontoRepository.findById(idRegistroPonto)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
