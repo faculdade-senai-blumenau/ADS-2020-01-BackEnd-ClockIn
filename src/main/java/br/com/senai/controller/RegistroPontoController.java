@@ -1,5 +1,7 @@
 package br.com.senai.controller;
 
+import br.com.senai.model.CargoModel;
+import br.com.senai.model.ParametroModel;
 import br.com.senai.model.RegistroPontoModel;
 import br.com.senai.repository.RegistroPontoRepository;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,23 @@ public class RegistroPontoController {
         this.registroPontoRepository = registroPontoRepository;
     }
 
-    @GetMapping(path = {"/{idUsuario}"})
-    public ResponseEntity<List<RegistroPontoModel>> getRegistroPonto(@PathVariable int idUsuario) {
+    @GetMapping
+    public ResponseEntity<List<RegistroPontoModel>> getRegistroPonto() {
+        List<RegistroPontoModel> registroPonto = registroPontoRepository.findAll();
+        return ResponseEntity.ok(registroPonto);
+    }
+
+    @GetMapping(path = {"/usuario/{idUsuario}"})
+    public ResponseEntity<List<RegistroPontoModel>> getRegistroPontoByidUsuario(@PathVariable int idUsuario) {
         List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistroPontoUsuario(idUsuario);
         return ResponseEntity.ok(registroPonto);
+    }
+
+    @GetMapping(path = {"/{idRegistroPonto}"})
+    public ResponseEntity<RegistroPontoModel> findById(@PathVariable int idRegistroPonto) {
+        return registroPontoRepository.findById(idRegistroPonto)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
