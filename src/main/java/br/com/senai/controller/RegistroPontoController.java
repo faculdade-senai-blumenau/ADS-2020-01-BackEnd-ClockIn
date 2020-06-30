@@ -1,7 +1,5 @@
 package br.com.senai.controller;
 
-import br.com.senai.model.CargoModel;
-import br.com.senai.model.ParametroModel;
 import br.com.senai.model.RegistroPontoModel;
 import br.com.senai.repository.RegistroPontoRepository;
 import org.springframework.http.ResponseEntity;
