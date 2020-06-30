@@ -23,6 +23,12 @@ public class RegistroPontoController {
         return ResponseEntity.ok(registroPonto);
     }
 
+    @GetMapping(path = {"/usuario/{idUsuario}"})
+    public ResponseEntity<List<RegistroPontoModel>> getRegistroPontoByidUsuario(@PathVariable int idUsuario) {
+        List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistroPontoUsuario(idUsuario);
+        return ResponseEntity.ok(registroPonto);
+    }
+
     @GetMapping(path = {"/{idRegistroPonto}"})
     public ResponseEntity<RegistroPontoModel> findById(@PathVariable int idRegistroPonto) {
         return registroPontoRepository.findById(idRegistroPonto)
