@@ -14,6 +14,6 @@ public interface RegistroPontoRepository extends JpaRepository<RegistroPontoMode
     @Query("select a\n" +
             "from registro_ponto a, usuario b\n" +
             "where a.idUsuario = b.idUsuario\n" +
-            "and a.idUsuario = :idUsuario")
+            "and a.idUsuario = :idUsuario order by a.idRegistroPonto ASC")
     List<RegistroPontoModel> findRegistroPontoUsuario(@Param("idUsuario") int idUsuario);
 }
