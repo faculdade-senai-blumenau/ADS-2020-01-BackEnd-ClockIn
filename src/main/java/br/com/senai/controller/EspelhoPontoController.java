@@ -1,6 +1,7 @@
 package br.com.senai.controller;
 
 import br.com.senai.model.EspelhoPontoModel;
+import br.com.senai.model.JornadaModel;
 import br.com.senai.repository.EspelhoPontoRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,17 @@ public class EspelhoPontoController {
         this.espelhoPontoRepository = espelhoPontoRepository;
     }
 
+    @GetMapping
+    public ResponseEntity<List<EspelhoPontoModel>> getEspelhoPonto() {
+        List<EspelhoPontoModel> espelhoPonto = espelhoPontoRepository.findAll();
+        return ResponseEntity.ok(espelhoPonto);
+    }
+
     @GetMapping(path = {"/{dataInicial}/{dataFinal}/{idUsuario}/{status}"})
     public ResponseEntity<List<EspelhoPontoModel>> getEspelhoPonto(@PathVariable LocalDate dataInicial,
-                                                                    @PathVariable LocalDate dataFinal,
-                                                                    @PathVariable int idUsuario,
-                                                                    @PathVariable int status) {
+                                                                   @PathVariable LocalDate dataFinal,
+                                                                   @PathVariable int idUsuario,
+                                                                   @PathVariable int status) {
         List<EspelhoPontoModel> espelhoPonto =
                 espelhoPontoRepository.findEspelhoPontoUsuario(dataInicial, dataFinal, idUsuario, status);
         return ResponseEntity.ok(espelhoPonto);
