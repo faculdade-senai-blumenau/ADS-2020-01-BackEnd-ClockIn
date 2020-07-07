@@ -5,7 +5,6 @@ import br.com.senai.model.JornadaModel;
 import br.com.senai.repository.EspelhoPontoRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,6 +24,8 @@ public class EspelhoPontoController {
         return ResponseEntity.ok(espelhoPonto);
     }
 
+
+
     @GetMapping(path = {"/{dataInicial}/{dataFinal}/{idUsuario}/{status}"})
     public ResponseEntity<List<EspelhoPontoModel>> getEspelhoPonto(@PathVariable LocalDate dataInicial,
                                                                    @PathVariable LocalDate dataFinal,
@@ -38,10 +39,17 @@ public class EspelhoPontoController {
     @PutMapping(value = "/{idEspelhoPonto}")
     public ResponseEntity<EspelhoPontoModel> updateEspePonto(@PathVariable("idEspelhoPonto") int idEspelhoPonto,
                                                                   @RequestBody EspelhoPontoModel espelhoPonto) {
+        System.out.println(espelhoPonto);
         return espelhoPontoRepository.findById(idEspelhoPonto)
                 .map(record -> {
-                    record.setStatus(record.getStatus());
+
+                    record.setIdUsuario(espelhoPonto.getIdUsuario());
+                    record.setDataInicial(espelhoPonto.getDataInicial());
+                    record.setDataFinal(espelhoPonto.getDataFinal());
+                    record.setStatus(espelhoPonto.getStatus());
+                    record.setUsuario(espelhoPonto.getUsuario());
                     EspelhoPontoModel updated = espelhoPontoRepository.save(record);
+
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
     }
