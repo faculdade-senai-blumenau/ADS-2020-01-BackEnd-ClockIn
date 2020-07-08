@@ -33,7 +33,7 @@ public class EspelhoPontoController {
     }
 
     @GetMapping(path = {"/periodoPonto"})
-    public ResponseEntity<List<EspelhoPontoModel>> getEspelhoPonto(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
+    public ResponseEntity<List<EspelhoPontoModel>> getRegistroPonto(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
                                                                    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal,
                                                                    @RequestParam int idUsuario) {
         List<EspelhoPontoModel> espelhoPonto =
@@ -42,12 +42,10 @@ public class EspelhoPontoController {
     }
 
     @GetMapping(path = {"/periodoEspelho"})
-    public ResponseEntity<List<EspelhoPontoModel>> getEspelhoPonto(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
-                                                                   @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal,
-                                                                   @RequestParam int idUsuario,
+    public ResponseEntity<List<EspelhoPontoModel>> getEspelhoPonto(@RequestParam int idUsuario,
                                                                    @RequestParam int status) {
         List<EspelhoPontoModel> espelhoPonto =
-                espelhoPontoRepository.findEspelhoPontoUsuario(dataInicial, dataFinal, idUsuario, status);
+                espelhoPontoRepository.findEspelhoPontoUsuario(idUsuario, status);
         return ResponseEntity.ok(espelhoPonto);
     }
 

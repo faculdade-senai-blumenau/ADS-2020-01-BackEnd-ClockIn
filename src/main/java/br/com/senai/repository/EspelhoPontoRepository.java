@@ -14,14 +14,11 @@ public interface EspelhoPontoRepository extends JpaRepository<EspelhoPontoModel,
 
     @Query("select a\n" +
             "from espelho_ponto a, usuario b\n" +
-            "where a.dataFinal between :dataInicial and :dataFinal\n" +
-            "and a.idUsuario = b.idUsuario\n" +
+            "where a.idUsuario = b.idUsuario\n" +
             "and a.idUsuario = :idUsuario\n" +
             "and a.status = :status\n" +
             "order by a.dataFinal desc")
-    List<EspelhoPontoModel> findEspelhoPontoUsuario(@Param("dataInicial") LocalDate dataInicial,
-                                                    @Param("dataFinal") LocalDate dataFinal,
-                                                    @Param("idUsuario") int idUsuario,
+    List<EspelhoPontoModel> findEspelhoPontoUsuario(@Param("idUsuario") int idUsuario,
                                                     @Param("status") int status);
 
     @Query("select a\n" +
