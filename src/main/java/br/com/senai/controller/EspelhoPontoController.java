@@ -2,6 +2,7 @@ package br.com.senai.controller;
 
 import br.com.senai.model.EspelhoPontoModel;
 import br.com.senai.model.JornadaModel;
+import br.com.senai.model.RegistroPontoModel;
 import br.com.senai.repository.EspelhoPontoRepository;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,11 @@ public class EspelhoPontoController {
         List<EspelhoPontoModel> espelhoPonto =
                 espelhoPontoRepository.findEspelhoPontoUsuario(idUsuario, status);
         return ResponseEntity.ok(espelhoPonto);
+    }
+
+    @PostMapping
+    public EspelhoPontoModel createEspelhoPonto(@RequestBody EspelhoPontoModel espelhoPonto) {
+        return espelhoPontoRepository.save(espelhoPonto);
     }
 
     @PutMapping(value = "/{idEspelhoPonto}")
