@@ -30,13 +30,6 @@ public class SetorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping(path = {"/usuario/{idUsuario}"})
-    public ResponseEntity<SetorModel> findSetorByIdUsuario(@PathVariable int idUsuario) {
-        return setorRepository.findById(idUsuario)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
-    }
-
     @PostMapping
     public SetorModel createSetor(@RequestBody SetorModel setor) {
         return setorRepository.save(setor);
@@ -47,7 +40,6 @@ public class SetorController {
                                                       @RequestBody SetorModel setor) {
         return setorRepository.findById(idSetor)
                 .map(record -> {
-                    record.setIdUsuario(setor.getIdUsuario());
                     record.setDescricaoSetor(setor.getDescricaoSetor());
                     SetorModel updated = setorRepository.save(record);
                     return ResponseEntity.ok().body(updated);
