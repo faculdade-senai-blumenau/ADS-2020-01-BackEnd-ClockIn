@@ -19,13 +19,20 @@ public class SetorController {
 
     @GetMapping
     public ResponseEntity<List<SetorModel>> getSetor() {
-        List<SetorModel> setor = setorRepository.findAll();
+        List<SetorModel> setor = setorRepository.getSetorResponsavel();
         return ResponseEntity.ok(setor);
     }
 
     @GetMapping(path = {"/{idSetor}"})
     public ResponseEntity<SetorModel> findById(@PathVariable int idSetor) {
         return setorRepository.findById(idSetor)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(path = {"/usuario/{idUsuario}"})
+    public ResponseEntity<SetorModel> findSetorByIdUsuario(@PathVariable int idUsuario) {
+        return setorRepository.findById(idUsuario)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -37,9 +44,10 @@ public class SetorController {
 
     @PutMapping(value = "/{idSetor}")
     public ResponseEntity<SetorModel> updateSetor(@PathVariable("idSetor") int idSetor,
-                                                      @RequestBody SetorModel setor) {
+                                                  @RequestBody SetorModel setor) {
         return setorRepository.findById(idSetor)
                 .map(record -> {
+                    record.setIdUsuario(setor.getIdUsuario());
                     record.setDescricaoSetor(setor.getDescricaoSetor());
                     SetorModel updated = setorRepository.save(record);
                     return ResponseEntity.ok().body(updated);
