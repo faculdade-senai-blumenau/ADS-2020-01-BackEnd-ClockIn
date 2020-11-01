@@ -22,6 +22,8 @@ public class UsuarioModel {
     private int idCargo;
     @Column(name = "id_jornada")
     private int idJornada;
+    @Column(name = "id_setor")
+    private int idSetor;
     private String nomeUsuario;
     private String cpf;
     private String rg;
@@ -41,6 +43,10 @@ public class UsuarioModel {
     @ManyToOne
     @JoinColumn(name = "id_jornada", updatable=false, insertable = false)
     private JornadaModel jornada;
+
+    @ManyToOne
+    @JoinColumn(name = "id_setor", updatable=false, insertable = false)
+    private SetorModel setor;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -64,6 +70,14 @@ public class UsuarioModel {
 
     public void setIdJornada(int idJornada) {
         this.idJornada = idJornada;
+    }
+
+    public int getIdSetor() {
+        return idSetor;
+    }
+
+    public void setIdSetor(int idSetor) {
+        this.idSetor = idSetor;
     }
 
     public String getNomeUsuario() {
@@ -168,5 +182,13 @@ public class UsuarioModel {
 
     public void setJornada(JornadaModel jornada) {
         this.jornada = jornada;
+    }
+
+    public SetorModel getSetor() {
+        return setor;
+    }
+
+    public void setSetor(SetorModel setor) {
+        this.setor = setor;
     }
 }
