@@ -19,7 +19,7 @@ public class SetorController {
 
     @GetMapping
     public ResponseEntity<List<SetorModel>> getSetor() {
-        List<SetorModel> setor = setorRepository.findAll();
+        List<SetorModel> setor = setorRepository.getSetorResponsavel();
         return ResponseEntity.ok(setor);
     }
 
@@ -44,7 +44,7 @@ public class SetorController {
 
     @PutMapping(value = "/{idSetor}")
     public ResponseEntity<SetorModel> updateSetor(@PathVariable("idSetor") int idSetor,
-                                                      @RequestBody SetorModel setor) {
+                                                  @RequestBody SetorModel setor) {
         return setorRepository.findById(idSetor)
                 .map(record -> {
                     record.setIdUsuario(setor.getIdUsuario());

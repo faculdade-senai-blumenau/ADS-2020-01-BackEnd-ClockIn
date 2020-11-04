@@ -16,7 +16,7 @@ public class SetorModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSetor;
     @Column(name = "id_usuario")
-    private int idUsuario;
+    private Integer idUsuario;
     private String descricaoSetor;
 
     @ManyToOne
@@ -31,7 +31,7 @@ public class SetorModel {
         this.idSetor = idSetor;
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 

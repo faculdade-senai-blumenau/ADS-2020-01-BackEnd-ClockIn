@@ -10,5 +10,6 @@ import java.util.stream.LongStream;
 public class BackEndAplication {
     public static void main(String[] args) {
         SpringApplication.run(BackEndAplication.class, args);
+
     }
 }

@@ -42,6 +42,7 @@ public class UsuarioController {
                 .map(record -> {
                     record.setIdCargo(usuario.getIdCargo());
                     record.setIdJornada(usuario.getIdJornada());
+                    record.setIdSetor(usuario.getIdSetor());
                     record.setNomeUsuario(usuario.getNomeUsuario());
                     record.setCpf(usuario.getCpf());
                     record.setRg(usuario.getRg());
