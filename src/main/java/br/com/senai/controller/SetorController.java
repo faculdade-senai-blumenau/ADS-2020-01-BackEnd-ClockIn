@@ -1,6 +1,7 @@
 package br.com.senai.controller;
 
 import br.com.senai.model.SetorModel;
+import br.com.senai.model.UsuarioModel;
 import br.com.senai.repository.SetorRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,17 @@ public class SetorController {
     }
 
     @GetMapping
+    public ResponseEntity<List<SetorModel>> get() {
+        List<SetorModel> setor = setorRepository.findAll();
+        return ResponseEntity.ok(setor);
+    }
+
+    /*
+    @GetMapping
     public ResponseEntity<List<SetorModel>> getSetor() {
         List<SetorModel> setor = setorRepository.getSetorResponsavel();
         return ResponseEntity.ok(setor);
-    }
+    }*/
 
     @GetMapping(path = {"/{idSetor}"})
     public ResponseEntity<SetorModel> findById(@PathVariable int idSetor) {
