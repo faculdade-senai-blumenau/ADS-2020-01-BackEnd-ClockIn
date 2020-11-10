@@ -21,7 +21,6 @@ public class SetorModel {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", updatable=false, insertable = false)
-    private UsuarioModel usuario;
 
     public int getIdSetor() {
         return idSetor;
@@ -45,13 +44,5 @@ public class SetorModel {
 
     public void setDescricaoSetor(String descricaoSetor) {
         this.descricaoSetor = descricaoSetor;
-    }
-
-    public UsuarioModel getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(UsuarioModel usuario) {
-        this.usuario = usuario;
     }
 }

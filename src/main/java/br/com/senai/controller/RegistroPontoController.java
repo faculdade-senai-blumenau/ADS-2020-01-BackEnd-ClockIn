@@ -23,6 +23,12 @@ public class RegistroPontoController {
         return ResponseEntity.ok(registroPonto);
     }
 
+    @GetMapping(path = {"/aprovacaoPendente"})
+    public ResponseEntity<List<RegistroPontoModel>> getRegistroPontoAprovacaoPendente() {
+        List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistroPontoAprovacaoPendente();
+        return ResponseEntity.ok(registroPonto);
+    }
+
     @GetMapping(path = {"/usuario/{idUsuario}"})
     public ResponseEntity<List<RegistroPontoModel>> getRegistroPontoByidUsuario(@PathVariable int idUsuario) {
         List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistroPontoUsuario(idUsuario);
