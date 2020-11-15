@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping({"/registroPonto"})
 public class RegistroPontoController {
-    
+
     private RegistroPontoRepository registroPontoRepository;
 
     RegistroPontoController(RegistroPontoRepository registroPontoRepository) {
