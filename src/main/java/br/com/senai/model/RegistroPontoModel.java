@@ -23,6 +23,7 @@ public class RegistroPontoModel {
     private LocalTime horaRegistro;
     private int justificaPonto;
     private String justificativaReprovacao;
+    private int edicaoAprovada;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", updatable=false, insertable = false)
@@ -74,6 +75,11 @@ public class RegistroPontoModel {
 
     public void setJustificativaReprovacao(String justificativaReprovacao) {
         this.justificativaReprovacao = justificativaReprovacao;
+    }
+    public int getEdicaoAprovada() {return edicaoAprovada;}
+
+    public void setEdicaoAprovada(int edicaoAprovada) {
+        this.edicaoAprovada = edicaoAprovada;
     }
 
     public UsuarioModel getUsuario() {

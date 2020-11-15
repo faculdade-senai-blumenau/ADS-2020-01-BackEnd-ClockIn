@@ -57,6 +57,7 @@ public class RegistroPontoController {
                     record.setHoraRegistro(registroPonto.getHoraRegistro());
                     record.setJustificaPonto(registroPonto.getJustificaPonto());
                     record.setJustificativaReprovacao(registroPonto.getJustificativaReprovacao());
+                    record.setEdicaoAprovada(registroPonto.getEdicaoAprovada());
                     record.setUsuario(registroPonto.getUsuario());
                     RegistroPontoModel updated = registroPontoRepository.save(record);
                     return ResponseEntity.ok().body(updated);
