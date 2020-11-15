@@ -1,10 +1,13 @@
 package br.com.senai.controller;
 
+import br.com.senai.model.EspelhoPontoModel;
 import br.com.senai.model.RegistroPontoModel;
 import br.com.senai.repository.RegistroPontoRepository;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -20,6 +23,13 @@ public class RegistroPontoController {
     @GetMapping
     public ResponseEntity<List<RegistroPontoModel>> getRegistroPonto() {
         List<RegistroPontoModel> registroPonto = registroPontoRepository.findAll();
+        return ResponseEntity.ok(registroPonto);
+    }
+
+    @GetMapping(path = {"/visualizarAprovacaoPendente"})
+    public ResponseEntity<List<RegistroPontoModel>> getRegistroPonto(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataRegistro,
+                                                                    @RequestParam int idUsuario) {
+        List<RegistroPontoModel> registroPonto = registroPontoRepository.getRegistrosPontoUsuario(dataRegistro, idUsuario);
         return ResponseEntity.ok(registroPonto);
     }
 
