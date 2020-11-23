@@ -54,6 +54,13 @@ public class UsuarioController {
                     record.setSenha(usuario.getSenha());
                     record.setFoto(usuario.getFoto());
                     record.setCargoConfianca(usuario.getCargoConfianca());
+                    record.setCep(usuario.getCep());
+                    record.setRua(usuario.getRua());
+                    record.setNumero(usuario.getNumero());
+                    record.setComplemento(usuario.getComplemento());
+                    record.setBairro(usuario.getBairro());
+                    record.setCidade(usuario.getCidade());
+                    record.setEstado(usuario.getEstado());
                     UsuarioModel updated = usuarioRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());

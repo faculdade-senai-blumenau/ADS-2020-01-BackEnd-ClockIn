@@ -15,12 +15,9 @@ public class SetorModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSetor;
-    @Column(name = "id_usuario")
     private Integer idUsuario;
     private String descricaoSetor;
-
-    @ManyToOne
-    @JoinColumn(name = "id_usuario", updatable=false, insertable = false)
+    private String nomeResponsavel;
 
     public int getIdSetor() {
         return idSetor;
@@ -44,5 +41,13 @@ public class SetorModel {
 
     public void setDescricaoSetor(String descricaoSetor) {
         this.descricaoSetor = descricaoSetor;
+    }
+
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
+    }
+
+    public void setNomeResponsavel(String nomeResponsavel) {
+        this.nomeResponsavel = nomeResponsavel;
     }
 }

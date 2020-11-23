@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -27,7 +28,7 @@ public class UsuarioModel {
     private String nomeUsuario;
     private String cpf;
     private String rg;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private String telefone;
     private short ativo;
     private short gestor;
@@ -35,6 +36,13 @@ public class UsuarioModel {
     private String senha;
     private String foto;
     private short cargoConfianca;
+    private String cep;
+    private String rua;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String estado;
 
     @ManyToOne
     @JoinColumn(name = "id_cargo", updatable=false, insertable = false)
@@ -76,13 +84,9 @@ public class UsuarioModel {
         return idSetor;
     }
 
-    public void setIdSetor(int idSetor) {
-        this.idSetor = idSetor;
-    }
+    public void setIdSetor(int idSetor) { this.idSetor = idSetor;}
 
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
+    public String getNomeUsuario() {return nomeUsuario;}
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
@@ -104,11 +108,11 @@ public class UsuarioModel {
         this.rg = rg;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -168,6 +172,62 @@ public class UsuarioModel {
         this.cargoConfianca = cargoConfianca;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public CargoModel getCargo() {
         return cargo;
     }
@@ -191,4 +251,6 @@ public class UsuarioModel {
     public void setSetor(SetorModel setor) {
         this.setor = setor;
     }
+
 }
+

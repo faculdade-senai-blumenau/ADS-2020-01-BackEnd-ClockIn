@@ -24,12 +24,6 @@ public class SetorController {
         return ResponseEntity.ok(setor);
     }
 
-    /*
-    @GetMapping
-    public ResponseEntity<List<SetorModel>> getSetor() {
-        List<SetorModel> setor = setorRepository.getSetorResponsavel();
-        return ResponseEntity.ok(setor);
-    }*/
 
     @GetMapping(path = {"/{idSetor}"})
     public ResponseEntity<SetorModel> findById(@PathVariable int idSetor) {
@@ -57,6 +51,7 @@ public class SetorController {
                 .map(record -> {
                     record.setIdUsuario(setor.getIdUsuario());
                     record.setDescricaoSetor(setor.getDescricaoSetor());
+                    record.setNomeResponsavel(setor.getNomeResponsavel());
                     SetorModel updated = setorRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());

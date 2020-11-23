@@ -22,8 +22,8 @@ public interface RegistroPontoRepository extends JpaRepository<RegistroPontoMode
 
     @Query("select a \n" +
             "from registro_ponto a\n" +
-            "where a.justificaPonto > 0 and (a.justificativaReprovacao is NULL or a.justificativaReprovacao = '')\n" +
-            "and edicaoAprovada = 0 or edicaoAprovada is null \n" +
+            "where a.justificaPonto > 0 \n" +
+            "and (edicaoAprovada in (0,2) or edicaoAprovada is null) \n" +
             "order by a.idUsuario ASC, a.horaRegistro ASC")
     List<RegistroPontoModel> findRegistroPontoAprovacaoPendente();
 
@@ -32,7 +32,7 @@ public interface RegistroPontoRepository extends JpaRepository<RegistroPontoMode
             "where a.dataRegistro = :dataRegistro\n" +
             "and a.idUsuario = b.idUsuario\n" +
             "and a.idUsuario = :idUsuario\n" +
-            "order by a.dataRegistro desc")
+            "order by a.horaRegistro asc")
     List<RegistroPontoModel> getRegistrosPontoUsuario(@Param("dataRegistro") LocalDate dataRegistro,
                                                       @Param("idUsuario") int idUsuario);
 }

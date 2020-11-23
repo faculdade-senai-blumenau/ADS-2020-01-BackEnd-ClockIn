@@ -45,6 +45,13 @@ public class EmpresaController {
                     record.setCnpj(empresa.getCnpj());
                     record.setTelefone(empresa.getTelefone());
                     record.setLogo(empresa.getLogo());
+                    record.setCep(empresa.getCep());
+                    record.setRua(empresa.getRua());
+                    record.setNumero(empresa.getNumero());
+                    record.setComplemento(empresa.getComplemento());
+                    record.setBairro(empresa.getBairro());
+                    record.setCidade(empresa.getCidade());
+                    record.setEstado(empresa.getEstado());
                     EmpresaModel updated = empresaRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
