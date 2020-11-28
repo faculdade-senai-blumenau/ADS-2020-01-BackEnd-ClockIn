@@ -36,12 +36,16 @@ public class ParametroController {
     }
 
     @PutMapping(value = "/{idParametro}")
-    public ResponseEntity<ParametroModel> updateParametro(@PathVariable("idParametro") int idParametro,
+    public ResponseEntity<?> updateParametro(@PathVariable("idParametro") int idParametro,
                                                                   @RequestBody ParametroModel parametro) {
+        System.out.println(idParametro);
+        System.out.println(parametro.getTempoSessao());
         return parametroRepository.findById(idParametro)
                 .map(record -> {
                     record.setTempoLimite(parametro.getTempoLimite());
                     record.setTipoNotificacao(parametro.getTipoNotificacao());
+                    record.setTempoSessao(parametro.getTempoSessao());
+                    System.out.println(parametro.getTempoSessao());
                     ParametroModel updated = parametroRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());

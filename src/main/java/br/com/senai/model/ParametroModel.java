@@ -21,6 +21,12 @@ public class ParametroModel {
     private int idParametro;
     private LocalTime tempoLimite;
     private short tipoNotificacao;
+    private int tempSessao;
+
+
+    public int getTempoSessao(){ return this.tempSessao; }
+
+    public void setTempoSessao(int tempoSessao){this.tempSessao = tempoSessao;}
 
     public int getIdParametro() {
         return idParametro;
