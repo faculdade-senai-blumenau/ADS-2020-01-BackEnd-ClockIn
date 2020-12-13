@@ -39,6 +39,19 @@ public class RegistroPontoController {
         return ResponseEntity.ok(registroPonto);
     }
 
+    @GetMapping(path = {"/registroPontoSemanal"})
+    public ResponseEntity<List<RegistroPontoModel>> getRegistrosPontoSemanal(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataLimite,
+                                                                             @RequestParam int idUsuario) {
+        List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistrosPontoSemanal(dataLimite, idUsuario);
+        return ResponseEntity.ok(registroPonto);
+    }
+
+    @GetMapping(path = {"/editarMarcacao/{idUsuario}"})
+    public ResponseEntity<List<RegistroPontoModel>> getRegistroPontoEditarMarcacao(@PathVariable int idUsuario) {
+        List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistroPontoEditarMarcacao(idUsuario);
+        return ResponseEntity.ok(registroPonto);
+    }
+
     @GetMapping(path = {"/usuario/{idUsuario}"})
     public ResponseEntity<List<RegistroPontoModel>> getRegistroPontoByidUsuario(@PathVariable int idUsuario) {
         List<RegistroPontoModel> registroPonto = registroPontoRepository.findRegistroPontoUsuario(idUsuario);
@@ -68,6 +81,7 @@ public class RegistroPontoController {
                     record.setJustificaPonto(registroPonto.getJustificaPonto());
                     record.setJustificativaReprovacao(registroPonto.getJustificativaReprovacao());
                     record.setEdicaoAprovada(registroPonto.getEdicaoAprovada());
+                    record.setEspelhoPonto(registroPonto.getEspelhoPonto());
                     record.setUsuario(registroPonto.getUsuario());
                     RegistroPontoModel updated = registroPontoRepository.save(record);
                     return ResponseEntity.ok().body(updated);

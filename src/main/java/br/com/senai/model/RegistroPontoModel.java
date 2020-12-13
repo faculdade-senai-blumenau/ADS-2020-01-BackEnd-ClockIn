@@ -17,13 +17,13 @@ public class RegistroPontoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRegistroPonto;
-    @Column(name = "id_usuario")
-    private int idUsuario;
+    @Column(name = "id_usuario") private int idUsuario;
     private LocalDate dataRegistro;
     private LocalTime horaRegistro;
     private int justificaPonto;
     private String justificativaReprovacao;
     private int edicaoAprovada;
+    private int espelhoPonto;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", updatable=false, insertable = false)
@@ -37,9 +37,7 @@ public class RegistroPontoModel {
         this.idRegistroPonto = idRegistroPonto;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
+    public int getIdUsuario() {return idUsuario;}
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
@@ -88,5 +86,11 @@ public class RegistroPontoModel {
 
     public void setUsuario(UsuarioModel usuario) {
         this.usuario = usuario;
+    }
+
+    public int getEspelhoPonto() {return espelhoPonto;}
+
+    public void setEspelhoPonto(int idEspelhoPonto) {
+        this.espelhoPonto = espelhoPonto;
     }
 }

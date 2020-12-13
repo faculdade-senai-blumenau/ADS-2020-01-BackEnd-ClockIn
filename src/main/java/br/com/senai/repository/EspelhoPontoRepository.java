@@ -22,8 +22,8 @@ public interface EspelhoPontoRepository extends JpaRepository<EspelhoPontoModel,
                                                     @Param("status") int status);
 
     @Query("select a\n" +
-            "from registro_ponto a, usuario b\n" +
-            "where a.dataRegistro between :dataInicial and :dataFinal\n" +
+            "from registro_ponto a, usuario b \n" +
+            "where a.dataRegistro >= :dataInicial and a.dataRegistro <= :dataFinal\n" +
             "and a.idUsuario = b.idUsuario\n" +
             "and a.idUsuario = :idUsuario\n" +
             "order by a.dataRegistro desc")
