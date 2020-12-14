@@ -46,7 +46,7 @@ public interface RegistroPontoRepository extends JpaRepository<RegistroPontoMode
 
     @Query("select a from registro_ponto a \n" +
             "where a.espelhoPonto not in ( \n" +
-            "select a.idEspelhoPonto from espelho_ponto a where a.status = 1) \n" +
+            "select b.idEspelhoPonto from espelho_ponto b where b.status = 1 and a.idUsuario = :idUsuario) \n" +
             "and a.idUsuario = :idUsuario \n" +
             "order by a.dataRegistro ASC , a.horaRegistro ASC")
     List<RegistroPontoModel> findRegistroPontoEditarMarcacao(@Param("idUsuario") int idUsuario);

@@ -19,6 +19,7 @@ public class JornadaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idJornada;
+    private String descricaoJornada;
     private LocalTime inicioManha;
     private LocalTime finalManha;
     private LocalTime inicioTarde;
@@ -62,5 +63,13 @@ public class JornadaModel {
 
     public void setFinalTarde(LocalTime finalTarde) {
         this.finalTarde = finalTarde;
+    }
+
+    public String getDescricaoJornada() {
+        return descricaoJornada;
+    }
+
+    public void setDescricaoJornada(String finalTarde) {
+        this.descricaoJornada = descricaoJornada;
     }
 }

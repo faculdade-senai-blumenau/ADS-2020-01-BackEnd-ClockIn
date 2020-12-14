@@ -82,6 +82,7 @@ public class RegistroPontoController {
                     record.setJustificativaReprovacao(registroPonto.getJustificativaReprovacao());
                     record.setEdicaoAprovada(registroPonto.getEdicaoAprovada());
                     record.setEspelhoPonto(registroPonto.getEspelhoPonto());
+                    record.setColor(registroPonto.getColor());
                     record.setUsuario(registroPonto.getUsuario());
                     RegistroPontoModel updated = registroPontoRepository.save(record);
                     return ResponseEntity.ok().body(updated);

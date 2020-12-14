@@ -24,6 +24,7 @@ public class RegistroPontoModel {
     private String justificativaReprovacao;
     private int edicaoAprovada;
     private int espelhoPonto;
+    private String color;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", updatable=false, insertable = false)
@@ -92,5 +93,11 @@ public class RegistroPontoModel {
 
     public void setEspelhoPonto(int idEspelhoPonto) {
         this.espelhoPonto = espelhoPonto;
+    }
+
+    public String getColor() {return color;}
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

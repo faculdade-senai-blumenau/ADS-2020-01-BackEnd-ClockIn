@@ -44,6 +44,7 @@ public class JornadaController {
                     record.setFinalManha(jornada.getFinalManha());
                     record.setInicioTarde(jornada.getInicioTarde());
                     record.setFinalTarde(jornada.getFinalTarde());
+                    record.setDescricaoJornada(jornada.getDescricaoJornada());
                     JornadaModel updated = jornadaRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
